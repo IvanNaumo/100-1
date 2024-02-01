@@ -1,6 +1,4 @@
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Question extends Model {
@@ -10,44 +8,47 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ Answer, Theme }) {
-      this.belongsTo(Theme, { foreignKey: 'theme_id' });
-      this.hasMany(Answer, { foreignKey: 'question_id' });
+      this.belongsTo(Theme, { foreignKey: "theme_id" });
+      this.hasMany(Answer, { foreignKey: "question_id" });
     }
   }
-  Question.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
-    theme_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Themes',
-        key: 'id',
+  Question.init(
+    {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      theme_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "Themes",
+          key: "id",
+        },
+      },
+      name: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      answer: {
+        allowNull: false,
+        type: DataTypes.TEXT,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
       },
     },
-    name: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-    },
-    answer: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-    },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE,
-    },
-  }, {
-    sequelize,
-    modelName: 'Question',
-  });
+    {
+      sequelize,
+      modelName: "Question",
+    }
+  );
   return Question;
 };

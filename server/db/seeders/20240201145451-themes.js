@@ -1,28 +1,26 @@
-/** @type {import('sequelize-cli').Migration} */
+'use strict';
+
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      'Themes',
-      [
-        {
-          name: 'Спортивные события и достижения',
-        },
-      ],
-      [
-        {
-          name: 'Спортивные события и достижения',
-        },
-      ],
-      [
-        {
-          name: 'Спортивные события и достижения',
-        },
-      ],
-      {}
-    );
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert('Themes', [{
+      id: 1,
+      name: 'История',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      id: 2,
+      name: 'География',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      id: 3,
+      name: 'Биология',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }], {});
   },
 
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Themes', null, {});
-  },
+  }
 };

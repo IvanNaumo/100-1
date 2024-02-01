@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Theme extends Model {
@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({  Question }) {
-      this.hasMany(Question, { foreignKey: 'theme_id' });
+    static associate({ Question }) {
+      this.hasMany(Question, { foreignKey: "theme_id" });
       // define association here
     }
   }
@@ -24,14 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      user_id: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id',
-        },
-      },
+
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -43,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Theme',
+      modelName: "Theme",
     }
   );
   return Theme;

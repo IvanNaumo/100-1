@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import elbrusLogo from './assets/elbrus.svg';
+
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import GameBoard from './components/GameBoard';
+// import SignIn from './components/auth/SignIn';
+// import SignUp from './components/auth/SignUp';
+// import UserProfile from './components/user/UserProfile';
+import NavBar from './components/common/NavBar';
+// import { useAppDispatch } from './redux/store';
+// import { checkUserSession, loadQuestions } from './redux/actions';
 
 function App(): JSX.Element {
-  const [count, setCount] = useState(0);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // Проверяем сессию пользователя при инициализации приложения
+    dispatch(checkUserSession());
+    // Загружаем вопросы для игры
+    dispatch(loadQuestions()).catch(console.error);
+  }, [dispatch]);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://github.com/Elbrus-Bootcamp" target="_blank" rel="noreferrer">
-          <img src={elbrusLogo} className="logo elbrus" alt="Elbrus logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h2>Elbrus Bootcamp</h2>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((prev) => prev + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <NavBar /> {/* Навигационная панель */}
+      <Routes>
+        <Route path="/" element={<GameBoard />} /> {/* Игровая доска */}
+        <Route path="/sign-in" element={<SignIn />} /> {/* Страница входа */}
+        <Route path="/sign-up" element={<SignUp />} /> {/* Страница регистрации */}
+        <Route path="/user-profile" element={<UserProfile />} /> {/* Личный кабинет пользователя */}
+        {/* Можно добавить дополнительные маршруты по мере необходимости */}
+        <Route path="*" element={<h1>404: Страница не найдена</h1>} /> {/* Страница 404 */}
+      </Routes>
     </div>
   );
 }
