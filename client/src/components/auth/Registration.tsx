@@ -1,15 +1,24 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
 import type { User } from '../../redux/redusers/type';
-import { useNavigate } from 'react-router-dom';
 
 function RegistrationPage(): JSX.Element {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPasssword] = useState('');
   const [rpassword, setRpasssword] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -35,17 +44,8 @@ function RegistrationPage(): JSX.Element {
     };
     console.log('data:', data);
     dispatch({ type: 'auth/registration', payload: data.user });
-    navigate('/');
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
     setIsOpen(false);
+    navigate('/');
   };
 
   return (
