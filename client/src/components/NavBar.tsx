@@ -1,14 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { RootState } from '../redux/store';
 
-export default function NavBar() {
-  // const themes = useSelector((store: RootState) => store.themes.themes);
-  // console.log(themes);
-=======
-import RegistrationPage from './auth/registration';
+import RegistrationPage from './auth/Registration';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../redux/store';
@@ -30,7 +22,6 @@ const NavBar = (): JSX.Element => {
     }
   };
 
->>>>>>> 19c193e72d41074438d872cb3a71bdee85957ba0
   return (
     <>
       <ul className="nav_container">

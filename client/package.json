@@ -16,13 +16,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-redux": "^9.1.0",
-    "react-router-dom": "^6.21.3",
-=======
     "react-router-dom": "^6.21.3",
     "react-redux": "^9.1.0",
->>>>>>> 19c193e72d41074438d872cb3a71bdee85957ba0
     "redux": "^5.0.1"
   },
   "devDependencies": {

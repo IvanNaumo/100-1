@@ -1,39 +1,36 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { useAppDispatch } from '../redux/store';
 
 import NavBar from '../components/NavBar';
-import ThemeListPage from '../components/Theme/ThemeListPage';
-import type { Theme } from '../components/Theme/type';
-// import { useSelector } from 'react-redux';
+
+import RegistrationPage from '../components/auth/Registration';
+import AuthorizationPage from '../components/auth/Authorization';
+import { useAppDispatch } from '../redux/store';
+import type { User } from '../redux/types';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-
-
-  const loadThemes = async (): Promise<void> => { 
-    const res = await fetch('/api/questions');
-    const data: { themes: Theme[] } = (await res.json()) as { themes: Theme[] };
-    // dispatch({ type: 'themes/load', payload: data.themes });
-    dispatch({ type:'themes/load', payload: data.themes });
-   // console.log(data);
-    
-   
-    
+  const checkUsers = async (): Promise<void> => {
+    const res = await fetch('/api/users');
+    const data: { users: User[] } = (await res.json()) as {
+      user: User;
+    };
+    dispatch({ type: 'auth/registration', payload: data.user });
   };
+
   useEffect(() => {
-    loadThemes().catch(console.log);
-  })
+    checkUsers().catch(console.log);
+  }, []);
+
   return (
     <div className="App">
       <Routes>
-          <Route path="/themes" element={<ThemeListPage />} />
         <Route path="/" element={<NavBar />}>
-          <Route index element={<NavBar />} />
           {/* <Route path="/top" element={<TopPlayersList />} /> */}
+          <Route path="/registration" element={<RegistrationPage />} />
+
+          <Route path="/login" element={<AuthorizationPage />} />
         </Route>
       </Routes>
     </div>
