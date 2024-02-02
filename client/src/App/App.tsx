@@ -8,7 +8,7 @@ import RegistrationPage from '../components/auth/Registration';
 import AuthorizationPage from '../components/auth/Authorization';
 import { useAppDispatch } from '../redux/store';
 import type { User } from '../redux/types';
-import { Theme } from '../components/Theme/type';
+import type { Theme } from '../components/Theme/type';
 import ThemeListPage from '../components/Theme/ThemeListPage';
 
 function App(): JSX.Element {
