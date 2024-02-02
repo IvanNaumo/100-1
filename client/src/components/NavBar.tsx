@@ -10,7 +10,7 @@ const NavBar = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleLogout = async (): Promise<void> => {
+  const onHandleLogout = async (): Promise<void> => {
     const res = await fetch('/api/auth/logout');
     const data: { message: string } = (await res.json()) as {
       message: string;
@@ -20,7 +20,6 @@ const NavBar = (): JSX.Element => {
       navigate('/');
     }
   };
-
 
   return (
     <>
@@ -33,14 +32,14 @@ const NavBar = (): JSX.Element => {
           </NavLink>
         </li>
         <li className="nav_item">
-        <RegistrationPage/>
+          <RegistrationPage />
         </li>
         <li className="nav_item">
           <NavLink className="nav_link" to="/login">
             Autorization
           </NavLink>
         </li>
-        <li className="nav_item">
+        <li onClick={onHandleLogout} className="nav_item">
           <NavLink className="nav_link" to="/logout">
             Logout
           </NavLink>
