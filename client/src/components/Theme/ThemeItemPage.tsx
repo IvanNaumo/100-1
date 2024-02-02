@@ -6,17 +6,17 @@ import React from 'react';
 import type { Theme } from './type';
 
 function HeroItemPage({ theme }: { theme: Theme }): JSX.Element {
-  
   // const { themeId } = useParams();
   // const themes = useSelector((store: RootState) => store.themes);
-  
+
   // const currentTheme = themeId && themes.find((theme) => theme.id === +themeId);
 
-  return  (
+  return (
     <div className="hero-item-page__item">
       <h2 className="hero-item-page__item--name">{theme.name}</h2>
     </div>
-  ) 
+  );
 }
 
 export default HeroItemPage;
+//////aaaaaaaaa
