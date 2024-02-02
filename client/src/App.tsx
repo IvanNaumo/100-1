@@ -13,9 +13,11 @@ function App(): JSX.Element {
     <div className="App">
       <Routes>
         <Route path="/" element={<NavBar />}>
+
           <Route index element={<MainPage />} />
           {/* <Route path="/top" element={<TopPlayersList />} /> */}
           <Route path="/registration" element={<RegistrationPage/>} />
+
           <Route path="/login" element={<AuthorizationPage/>} />
 
 

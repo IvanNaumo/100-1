@@ -1,5 +1,5 @@
 import React from 'react';
-
+import RegistrationPage from './auth/registration';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../redux/store';
@@ -33,9 +33,7 @@ const NavBar = (): JSX.Element => {
           </NavLink>
         </li>
         <li className="nav_item">
-          <NavLink className="nav_link" to="/registration">
-            Registration
-          </NavLink>
+        <RegistrationPage/>
         </li>
         <li className="nav_item">
           <NavLink className="nav_link" to="/login">
