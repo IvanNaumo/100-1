@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import RegistrationPage from './auth/registration';
 
 export default function NavBar() {
   return (
@@ -12,9 +13,7 @@ export default function NavBar() {
           </NavLink>
         </li>
         <li className="nav_item">
-          <NavLink className="nav_link" to="/registration">
-            Registration
-          </NavLink>
+        <RegistrationPage/>
         </li>
         <li className="nav_item">
           <NavLink className="nav_link" to="/login">

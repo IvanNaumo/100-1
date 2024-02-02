@@ -12,7 +12,7 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<NavBar />}>
 
-          <Route path="/registration" element={<RegistrationPage/>} />
+          {/* <Route path="/registration" element={<RegistrationPage/>} /> */}
           <Route path="/login" element={<AuthorizationPage/>} />
 
         </Route>
