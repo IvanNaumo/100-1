@@ -4,23 +4,34 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Themes', [{
       id: 1,
-      name: 'История',
+      name: "Почему коты правят миром",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 2,
-      name: 'География',
+      name: "Тайные жизни садовых гномов",
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 3,
-      name: 'Биология',
+      name: "Истории из жизни супергероев на пенсии",
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      id: 4,
+      name: "Приключения в мире пиццы",
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      id: 5,
+      name: "Загадочные события в офисной жизни",
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Themes', null, {});
+    // Удалите только темы с id от 4 до 8
+    await queryInterface.bulkDelete('Themes', { id: { [Sequelize.Op.between]: [4, 8] } });
   }
 };

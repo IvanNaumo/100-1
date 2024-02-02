@@ -8,8 +8,9 @@ import RegistrationPage from '../components/auth/Registration';
 import AuthorizationPage from '../components/auth/Authorization';
 import { useAppDispatch } from '../redux/store';
 import type { User } from '../redux/types';
-import { Theme } from '../components/Theme/type';
+import type { Theme } from '../components/Theme/type';
 import ThemeListPage from '../components/Theme/ThemeListPage';
+import NotFoundPage from '../components/NotFoundPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -23,9 +24,8 @@ function App(): JSX.Element {
   const loadThemes = async (): Promise<void> => {
     const res = await fetch('/api/questions');
     const data: { themes: Theme[] } = (await res.json()) as { themes: Theme[] };
-    // dispatch({ type: 'themes/load', payload: data.themes });
+
     dispatch({ type: 'themes/load', payload: data.themes });
-    // console.log(data);
   };
 
   useEffect(() => {
@@ -42,6 +42,7 @@ function App(): JSX.Element {
           <Route path="/registration" element={<RegistrationPage />} />
 
           <Route path="/login" element={<AuthorizationPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>
