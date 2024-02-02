@@ -3,8 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import NavBar from './components/NavBar';
+
 import RegistrationPage from './components/auth/registration';
 import AuthorizationPage from './components/auth/Authorization';
+
 
 function App(): JSX.Element {
   return (
@@ -12,8 +14,12 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<NavBar />}>
 
-          {/* <Route path="/registration" element={<RegistrationPage/>} /> */}
+          <Route index element={<MainPage />} />
+          {/* <Route path="/top" element={<TopPlayersList />} /> */}
+          <Route path="/registration" element={<RegistrationPage/>} />
+
           <Route path="/login" element={<AuthorizationPage/>} />
+
 
         </Route>
       </Routes>
