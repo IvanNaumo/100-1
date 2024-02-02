@@ -34,26 +34,25 @@ router.get('/', async (req, res) => {
 // });
 
 router.post('/', async (req, res) => {
-  console.log('apirouter');
+  console.log(res.locals.user);
   try {
-    const user = await User.findOne({ where: { id: 1 } });
+    const user = await User.findOne({ where: { id: res.locals.user.id } });
     const { answer, id } = req.body;
     const question = await Question.findOne({ where: { id } });
     if (answer.toLowerCase() === question.answer.toLowerCase()) {
       console.log('1233');
-      user.score = Number(user.score) + 1;
+      user.score = Number(user.score) + 100;
       await user.save();
       res.app.locals.user.score = user.score;
       res.json({ message: 'Правильный ответ' });
     } else {
-      user.score = Number(user.score) - 1;
+      user.score = Number(user.score) - 100;
       await user.save();
-      res.app.locals.user.score = user.score;
-      res.json({ message: `Не верный ответ ${question.answer}` });
+       res.json(user.score);
+      res.json({ message: `Не верный ответ ${question.answer}`, user });
     }
   } catch ({ message }) {
     console.log(message);
   }
 });
 module.exports = router;
-//yyyuuuu

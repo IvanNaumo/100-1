@@ -42,6 +42,7 @@ function RegistrationPage(): JSX.Element {
       message: string;
       user: User;
     };
+
     console.log('data:', data);
     dispatch({ type: 'auth/registration', payload: data.user });
     setIsOpen(false);
@@ -83,7 +84,7 @@ function RegistrationPage(): JSX.Element {
                 type="text"
                 placeholder="Enter password"
               />
-              <button type="submit">Sign-Up</button>
+              <button type="submit" >Sign-Up</button>
             </form>
           </div>
         </div>
