@@ -21,3 +21,4 @@ export type AuthState = {
 
 export type Action =
   | { type: 'themes/load'; payload: Theme[] }
+  | { type: 'answer'; payload: User }

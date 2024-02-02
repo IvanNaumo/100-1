@@ -13,6 +13,11 @@ export const themesReducer = (state: State = initState, action: Action): State =
         ...state,
         themes: action.payload,
       };
+    case 'answer':
+      return {
+        ...state,
+        themes: action.payload,
+      };
       default:
           return state;
   }
