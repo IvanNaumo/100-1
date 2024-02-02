@@ -27,11 +27,11 @@ const NavBar = (): JSX.Element => {
       <ul className="nav_container">
         {user && <li>Hello, {user.name}!</li>}
 
-        <li className="nav_item">
+        {/* <li className="nav_item">
           <NavLink className="nav_link" to="/top">
             TOP players
           </NavLink>
-        </li>
+        </li> */}
         <li className="nav_item">
           <RegistrationPage />
         </li>
