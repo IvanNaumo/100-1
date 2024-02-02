@@ -1,11 +1,9 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { type RootState } from '../../redux/store';
 import ThemeItemPage from './ThemeItemPage';
 import QuestionItem from './QuestionItem';
-// import './styles/heroes.scss';
 
 function ThemeListPage(): JSX.Element {
   const themes = useSelector((store: RootState) => store.themes.themes);
