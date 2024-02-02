@@ -1,11 +1,32 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
 
-export default function NavBar() {
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../redux/store';
+
+const NavBar = (): JSX.Element => {
+  const user = useSelector((store: RootState) => store.auth.auth);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleLogout = async (): Promise<void> => {
+    const res = await fetch('/api/auth/logout');
+    const data: { message: string } = (await res.json()) as {
+      message: string;
+    };
+    if (data.message === 'success') {
+      dispatch({ type: 'auth/logout' });
+      navigate('/');
+    }
+  };
+
+
   return (
     <>
       <ul className="nav_container">
-        <li className="nav_item">Hello</li>
+        {user && <li>Hello, {user.name}!</li>}
+
         <li className="nav_item">
           <NavLink className="nav_link" to="/top">
             TOP players
@@ -21,8 +42,15 @@ export default function NavBar() {
             Autorization
           </NavLink>
         </li>
+        <li className="nav_item">
+          <NavLink className="nav_link" to="/logout">
+            Logout
+          </NavLink>
+        </li>
       </ul>
       <Outlet />
     </>
   );
-}
+};
+
+export default NavBar;
