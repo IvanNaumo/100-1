@@ -17,5 +17,5 @@ export type AuthState = {
 export type Action =
   | { type: 'user/load'; payload: User[] }
   | { type: 'auth/registration'; payload: User }
-  | { type: 'user/login'; payload: User }
-  | { type: 'user/logout' };
+  | { type: 'auth/login'; payload: User }
+  | { type: 'auth/logout' };
